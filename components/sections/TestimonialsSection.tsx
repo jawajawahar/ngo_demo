@@ -306,22 +306,43 @@ export default function TestimonialsSection() {
               />
             </div>
 
-            {/* Right Column: Aesthetic Compact Light Testimonial Quote Card */}
-            <div className="lg:col-span-7 relative overflow-hidden rounded-3xl border border-[#e8e2d8] bg-gradient-to-br from-white via-[#fcfbf8] to-[#f6f2ea] text-ink shadow-[0_20px_50px_-15px_rgba(0,40,25,0.06),0_4px_16px_rgba(0,0,0,0.02)] p-7 sm:p-10 lg:p-12 flex flex-col justify-center">
-              {/* Subtle aesthetic watermark quote icon */}
-              <Quote
-                className="pointer-events-none absolute -bottom-8 right-6 size-48 text-forest/[0.035] select-none"
+            {/* Right Column: Aesthetic Compact Light Testimonial Quote Card with Halfway Reflection */}
+            <div className="lg:col-span-7 relative flex flex-col justify-center">
+              {/* Floor Shade under the side quote card */}
+              <div
+                className="pointer-events-none absolute -bottom-5 left-1/2 -translate-x-1/2 w-[88%] h-7 rounded-[100%] bg-black/35 blur-xl z-0"
                 aria-hidden="true"
               />
 
-              <div className="relative z-10">
-                {/* Decorative small quote icon */}
-                <Quote className="size-10 sm:size-11 text-gold/40 mb-5 shrink-0" aria-hidden="true" />
+              <div className="relative overflow-hidden rounded-3xl border border-[#e8e2d8] border-l-[3px] border-l-[#d70350]/70 bg-gradient-to-br from-white via-[#fcfbf8] to-[#f6f2ea] text-ink shadow-[0_25px_50px_-15px_rgba(0,40,25,0.08),-15px_0_40px_-10px_rgba(215,3,80,0.25),0_4px_16px_rgba(0,0,0,0.02)] p-7 sm:p-10 lg:p-12">
+                {/* Halfway Ambient Shade & Crimson Reflection cast from the rotating image on the left */}
+                <div
+                  className="pointer-events-none absolute inset-y-0 left-0 w-1/2 overflow-hidden z-0"
+                  aria-hidden="true"
+                >
+                  {/* Ambient depth shadow cast halfway from the left 3D cylinder */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/[0.12] via-black/[0.04] to-transparent" />
+                  {/* Crimson/Pink rim reflection matching the front image border */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[rgba(215,3,80,0.22)] via-[rgba(215,3,80,0.07)] to-transparent" />
+                  {/* Warm light spill reflection */}
+                  <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[rgba(212,160,23,0.12)] to-transparent" />
+                </div>
 
-                <div key={currentFeatured.id} className="animate-fadeIn">
-                  <blockquote className="font-serif text-xl sm:text-2xl lg:text-[1.8rem] italic leading-[1.62] text-ink/90">
-                    &ldquo;{currentFeatured.quote}&rdquo;
-                  </blockquote>
+                {/* Subtle aesthetic watermark quote icon */}
+                <Quote
+                  className="pointer-events-none absolute -bottom-8 right-6 size-48 text-forest/[0.035] select-none"
+                  aria-hidden="true"
+                />
+
+                <div className="relative z-10">
+                  {/* Decorative small quote icon with vibrant crimson glow */}
+                  <Quote className="size-10 sm:size-11 text-[#d70350]/75 mb-5 shrink-0" aria-hidden="true" />
+
+                  <div key={currentFeatured.id} className="animate-fadeIn">
+                    <blockquote className="font-serif text-xl sm:text-2xl lg:text-[1.8rem] italic leading-[1.62] text-ink/90">
+                      &ldquo;{currentFeatured.quote}&rdquo;
+                    </blockquote>
+                  </div>
                 </div>
               </div>
             </div>
