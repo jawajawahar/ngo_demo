@@ -1,6 +1,5 @@
 import Container from "@/components/layout/Container";
 import FadeUp from "@/components/animations/FadeUp";
-import DemoBadge from "@/components/ui/DemoBadge";
 import { partners } from "@/data/partners";
 
 export default function PartnersSection() {
@@ -11,7 +10,6 @@ export default function PartnersSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">
             In partnership with
           </p>
-          <DemoBadge />
         </FadeUp>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-14 gap-y-8">

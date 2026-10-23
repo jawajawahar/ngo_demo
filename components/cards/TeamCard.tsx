@@ -5,7 +5,7 @@ import type { TeamMember } from "@/types";
 export default function TeamCard({ member }: { member: TeamMember }) {
   return (
     <div>
-      <ImageReveal className="relative aspect-[4/5] w-full rounded-lg">
+      <ImageReveal className="relative aspect-[4/5] w-full rounded-md">
         <Image
           src={member.image}
           alt={member.imageAlt}

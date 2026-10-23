@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
   return (
     <section className="pt-36 pb-24 lg:pt-44 lg:pb-32">
       <Container className="mx-auto max-w-2xl">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
           Legal
         </span>
         <h1 className="mt-4 font-display text-[2.25rem] text-ink sm:text-[3rem]">

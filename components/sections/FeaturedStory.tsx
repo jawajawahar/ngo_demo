@@ -25,13 +25,13 @@ export default function FeaturedStory() {
 
         <div className="lg:col-span-7 lg:pl-8">
           <FadeUp>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
               Featured Story
             </span>
           </FadeUp>
           <TextReveal
             as="h2"
-            className="mt-4 text-balance font-display text-[2rem] leading-[1.15] text-ink sm:text-[2.5rem]"
+            className="mt-4 text-balance font-display text-[2rem] uppercase leading-[1.15] tracking-tight text-forest sm:text-[2.5rem]"
           >
             {story.title}
           </TextReveal>

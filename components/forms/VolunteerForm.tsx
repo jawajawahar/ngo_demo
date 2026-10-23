@@ -184,7 +184,7 @@ export default function VolunteerForm() {
 function inputClasses(hasError: boolean) {
   return cn(
     "w-full rounded-md border bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
-    hasError ? "border-red-400" : "border-ink/15 focus:border-ink/40"
+    hasError ? "border-gold" : "border-ink/15 focus:border-ink/40"
   );
 }
 
@@ -206,7 +206,7 @@ function Field({
       </label>
       {children}
       {error && (
-        <p id={`${htmlFor}-error`} className="mt-1.5 text-xs text-red-500">
+        <p id={`${htmlFor}-error`} className="mt-1.5 text-xs text-gold">
           {error}
         </p>
       )}

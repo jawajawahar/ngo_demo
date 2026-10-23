@@ -67,7 +67,7 @@ export default function ContactForm() {
             aria-invalid={!!errors.name}
             className={inputClasses(!!errors.name)}
           />
-          {errors.name && <p className="mt-1.5 text-xs text-red-500">{errors.name}</p>}
+          {errors.name && <p className="mt-1.5 text-xs text-gold">{errors.name}</p>}
         </div>
         <div>
           <label htmlFor="c-email" className="mb-2 block text-sm font-medium text-ink">
@@ -81,7 +81,7 @@ export default function ContactForm() {
             aria-invalid={!!errors.email}
             className={inputClasses(!!errors.email)}
           />
-          {errors.email && <p className="mt-1.5 text-xs text-red-500">{errors.email}</p>}
+          {errors.email && <p className="mt-1.5 text-xs text-gold">{errors.email}</p>}
         </div>
       </div>
 
@@ -116,7 +116,7 @@ export default function ContactForm() {
           aria-invalid={!!errors.message}
           className={inputClasses(!!errors.message)}
         />
-        {errors.message && <p className="mt-1.5 text-xs text-red-500">{errors.message}</p>}
+        {errors.message && <p className="mt-1.5 text-xs text-gold">{errors.message}</p>}
       </div>
 
       <button
@@ -133,6 +133,6 @@ export default function ContactForm() {
 function inputClasses(hasError: boolean) {
   return cn(
     "w-full rounded-md border bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
-    hasError ? "border-red-400" : "border-ink/15 focus:border-ink/40"
+    hasError ? "border-gold" : "border-ink/15 focus:border-ink/40"
   );
 }

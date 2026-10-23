@@ -68,7 +68,7 @@ export default function GetInvolvedPage() {
                 </ImageReveal>
                 <div className="mt-5 flex items-start justify-between gap-4">
                   <div>
-                    <h2 className="font-display text-2xl text-ink">{path.title}</h2>
+                    <h2 className="font-display text-2xl uppercase tracking-tight text-ink">{path.title}</h2>
                     <p className="mt-2 text-sm leading-relaxed text-muted">
                       {path.description}
                     </p>

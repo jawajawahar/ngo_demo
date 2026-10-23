@@ -5,10 +5,11 @@ import NewsletterForm from "@/components/forms/NewsletterForm";
 
 export default function Newsletter() {
   return (
-    <section className="bg-sage/10 py-20 lg:py-28">
-      <Container className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
-        <TextReveal as="h2" className="font-display text-[2rem] text-ink sm:text-[2.5rem]">
-          Field notes, once a month
+    <section className="bg-cream pb-20 lg:pb-28">
+      <Container>
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 rounded-md border border-forest/20 bg-white px-6 py-14 text-center sm:px-12">
+        <TextReveal as="h2" className="font-display text-[2rem] uppercase leading-tight tracking-tight text-forest sm:text-[2.5rem]">
+          Stay close to the people you help
         </TextReveal>
         <FadeUp delay={0.08}>
           <p className="max-w-md text-base text-muted">
@@ -19,6 +20,7 @@ export default function Newsletter() {
         <FadeUp delay={0.14} className="w-full max-w-md">
           <NewsletterForm />
         </FadeUp>
+        </div>
       </Container>
     </section>
   );

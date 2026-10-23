@@ -5,7 +5,6 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import Container from "@/components/layout/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import DemoBadge from "@/components/ui/DemoBadge";
 import { regionImpact } from "@/data/impact";
 import { formatNumber } from "@/lib/utils";
 
@@ -53,7 +52,6 @@ export default function RegionImpact() {
             title="Impact by region"
             className="max-w-xl"
           />
-          <DemoBadge />
         </div>
 
         <div ref={listRef} className="flex flex-col gap-8">
@@ -71,7 +69,7 @@ export default function RegionImpact() {
                 <div
                   data-bar-fill
                   data-width={`${Math.round((region.peopleReached / maxReach) * 100)}%`}
-                  className="h-full rounded-full bg-sage"
+                  className="h-full rounded-full bg-forest"
                 />
               </div>
             </div>

@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { DM_Serif_Display, Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import MobileDonateBar from "@/components/layout/MobileDonateBar";
 import SmoothScrollProvider from "@/components/animations/SmoothScrollProvider";
 import { orgContact } from "@/data/navigation";
 import "./globals.css";
 
-const dmSerif = DM_Serif_Display({
-  variable: "--font-dm-serif",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["600", "700", "800"],
   display: "swap",
 });
 
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${dmSerif.variable} ${inter.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body className="flex min-h-svh flex-col bg-cream text-ink antialiased">
         <a
           href="#main-content"
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             {children}
           </main>
           <Footer />
+          <MobileDonateBar />
         </SmoothScrollProvider>
       </body>
     </html>

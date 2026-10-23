@@ -27,12 +27,12 @@ export default function CTABand({
       <Container className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center">
         {eyebrow && (
           <FadeUp>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
               {eyebrow}
             </span>
           </FadeUp>
         )}
-        <TextReveal as="h2" className="text-balance font-display text-[2rem] sm:text-[2.75rem]">
+        <TextReveal as="h2" className="text-balance font-display text-[2rem] uppercase leading-tight tracking-tight sm:text-[2.75rem]">
           {title}
         </TextReveal>
         {description && (
@@ -41,7 +41,7 @@ export default function CTABand({
           </FadeUp>
         )}
         <FadeUp delay={0.16} className="mt-2 flex flex-wrap items-center justify-center gap-4">
-          <Button href={primaryHref} size="lg">
+          <Button href={primaryHref} variant="donate" size="lg">
             {primaryLabel}
           </Button>
           {secondaryLabel && secondaryHref && (

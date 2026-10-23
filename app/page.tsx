@@ -1,10 +1,11 @@
 import HomeHero from "@/components/hero/HomeHero";
-import ImpactStatement from "@/components/sections/ImpactStatement";
+import SriLankaStory from "@/components/sections/SriLankaStory";
+import AppealsSection from "@/components/sections/AppealsSection";
+import GivingWaysSection from "@/components/sections/GivingWaysSection";
 import ImpactStats from "@/components/sections/ImpactStats";
-import OurWorkSection from "@/components/sections/OurWorkSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import FeaturedStory from "@/components/sections/FeaturedStory";
 import HowWeCreateChange from "@/components/sections/HowWeCreateChange";
-import CampaignSection from "@/components/sections/CampaignSection";
 import VolunteerCTA from "@/components/sections/VolunteerCTA";
 import StoriesSection from "@/components/sections/StoriesSection";
 import PartnersSection from "@/components/sections/PartnersSection";
@@ -14,12 +15,13 @@ export default function Home() {
   return (
     <>
       <HomeHero />
-      <ImpactStatement />
+      <SriLankaStory />
+      <AppealsSection />
+      <GivingWaysSection />
       <ImpactStats />
-      <OurWorkSection />
+      <TestimonialsSection />
       <FeaturedStory />
       <HowWeCreateChange />
-      <CampaignSection />
       <VolunteerCTA />
       <StoriesSection />
       <PartnersSection />

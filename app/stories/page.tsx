@@ -44,13 +44,13 @@ export default function StoriesPage() {
           </ImageReveal>
           <div className="lg:col-span-5">
             <FadeUp>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                 Featured
               </span>
             </FadeUp>
             <TextReveal
               as="h2"
-              className="mt-4 text-balance font-display text-[2rem] leading-[1.15] text-ink sm:text-[2.5rem]"
+              className="mt-4 text-balance font-display text-[2rem] uppercase leading-[1.15] tracking-tight text-ink sm:text-[2.5rem]"
             >
               {featured.title}
             </TextReveal>

@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-type Variant = "primary" | "secondary" | "outline-light" | "ghost";
+type Variant = "primary" | "donate" | "secondary" | "outline-light" | "ghost";
 type Size = "md" | "lg";
 
 interface SharedProps {
@@ -27,18 +27,16 @@ type ButtonAsButton = SharedProps &
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const variantClasses: Record<Variant, string> = {
-  primary:
-    "bg-forest text-cream hover:bg-forest-dark border border-forest hover:border-forest-dark",
-  secondary:
-    "bg-transparent text-forest border border-forest hover:bg-forest hover:text-cream",
-  "outline-light":
-    "bg-transparent text-white border border-white/70 hover:bg-white hover:text-forest",
-  ghost: "bg-transparent text-ink border border-transparent hover:border-ink/20",
+  primary: "bg-forest text-white border-2 border-forest hover:bg-forest/90",
+  donate: "bg-gold text-white border-2 border-gold hover:bg-gold-dark hover:border-gold-dark",
+  secondary: "bg-white text-forest border-2 border-forest hover:bg-forest hover:text-white",
+  "outline-light": "bg-transparent text-white border-2 border-white hover:bg-white hover:text-forest",
+  ghost: "bg-transparent text-ink border-2 border-transparent hover:border-ink/20",
 };
 
 const sizeClasses: Record<Size, string> = {
-  md: "px-6 py-3 text-sm",
-  lg: "px-8 py-4 text-base",
+  md: "px-5 py-2.5 text-sm",
+  lg: "px-7 py-3.5 text-[15px]",
 };
 
 export default function Button({
@@ -51,7 +49,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    "group/btn inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-colors duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
+    "group/btn inline-flex items-center justify-center gap-2 rounded-md font-bold uppercase tracking-wide transition-colors duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
     variantClasses[variant],
     sizeClasses[size],
     className

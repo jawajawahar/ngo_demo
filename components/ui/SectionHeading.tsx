@@ -34,8 +34,8 @@ export default function SectionHeading({
         <FadeUp y={12} duration={0.7}>
           <span
             className={cn(
-              "text-xs font-semibold uppercase tracking-[0.2em]",
-              light ? "text-gold" : "text-sage"
+              "inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em]",
+              light ? "text-white/80" : "text-gold"
             )}
           >
             {eyebrow}
@@ -45,8 +45,8 @@ export default function SectionHeading({
       <TextReveal
         as={titleAs}
         className={cn(
-          "font-display text-balance text-[2.25rem] leading-[1.1] sm:text-[2.75rem] lg:text-[3.25rem]",
-          light ? "text-white" : "text-ink"
+          "font-display text-balance text-[2.1rem] uppercase leading-[1.1] tracking-tight sm:text-[2.6rem] lg:text-[3rem]",
+          light ? "text-white" : "text-forest"
         )}
       >
         {title}

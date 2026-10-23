@@ -1,0 +1,87 @@
+name: CI/CD Pipeline & Live Deployment
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  lint-and-build:
+    name: Lint, Test & Build Next.js
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Build Next.js Production App
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          NODE_ENV: production
+
+  docker-build-test:
+    name: Build & Verify Docker Container
+    needs: lint-and-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: actions/setup-buildx-action@v3
+
+      - name: Build Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: ngo-demo:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy-to-vercel:
+    name: Production Deployment to Vercel
+    needs: [lint-and-build, docker-build-test]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          if [ -n "$VERCEL_TOKEN" ]; then
+            echo "Deploying directly via Vercel CLI with GitHub secret tokens..."
+            npx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+            npx vercel build --prod --token=$VERCEL_TOKEN
+            npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+          else
+            echo "VERCEL_TOKEN secret is not set in GitHub repository secrets."
+            echo "Vercel's automatic Git integration will deploy this push automatically to https://ngo-demo-bice.vercel.app."
+          fi

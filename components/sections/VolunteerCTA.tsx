@@ -16,18 +16,18 @@ export default function VolunteerCTA() {
           sizes="100vw"
           className="object-cover opacity-35"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-dark/85 to-forest-dark/60" />
+        <div className="absolute inset-0 bg-forest/85" />
       </div>
 
       <Container className="relative z-10 mx-auto max-w-3xl text-center">
         <FadeUp>
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
             Get Involved
           </span>
         </FadeUp>
         <TextReveal
           as="h2"
-          className="mt-5 text-balance font-display text-[2.25rem] leading-[1.1] sm:text-[3rem] lg:text-[3.5rem]"
+          className="mt-5 text-balance font-display text-[2.25rem] uppercase leading-[1.1] tracking-tight sm:text-[3rem] lg:text-[3.5rem]"
         >
           Your time changes what money alone can&apos;t.
         </TextReveal>
@@ -38,7 +38,7 @@ export default function VolunteerCTA() {
           </p>
         </FadeUp>
         <FadeUp delay={0.2} className="mt-9 flex flex-wrap items-center justify-center gap-4">
-          <Button href="/get-involved/volunteer" size="lg">
+          <Button href="/get-involved/volunteer" variant="donate" size="lg">
             Become a volunteer
           </Button>
           <Button href="/get-involved" variant="outline-light" size="lg" showArrow={false}>

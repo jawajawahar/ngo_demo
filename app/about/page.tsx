@@ -23,15 +23,15 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About Us"
+        eyebrow="Who We Are"
         title="Rooted in community, built for the long term."
-        description="Voice of Need began with a single classroom renovation in 2015. A decade later, we still work the same way — starting with the people who live the problem."
+        description="Founded with a vision to stand beside vulnerable communities across Sri Lanka, Voice of Need delivers vital food relief, clean water, healthcare, and education where help is needed most."
         image={images.libraryTeamwork}
-        imageAlt="A team collaborating together around a table of books"
+        imageAlt="Voice of Need team collaborating with community leaders"
       />
 
       {/* Story */}
-      <section className="bg-white py-24 lg:py-32">
+      <section id="our-story" className="bg-white py-24 lg:py-32 scroll-mt-20">
         <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
           <ImageReveal className="relative aspect-[4/5] w-full rounded-lg lg:col-span-5">
             <Image
@@ -43,29 +43,21 @@ export default function AboutPage() {
             />
           </ImageReveal>
           <div className="lg:col-span-7 lg:pl-8">
-            <SectionHeading eyebrow="Our Story" title="How Voice of Need started" />
+            <SectionHeading eyebrow="Our Story & History" title="How Voice of Need started" />
             <div className="mt-6 flex flex-col gap-5 text-base leading-relaxed text-muted">
               <FadeUp>
                 <p>
-                  Voice of Need Foundation was founded in 2015 after a group of educators and
-                  engineers spent a summer helping rebuild a single flood-damaged
-                  classroom in the Kolda region. What was meant to be a one-time project
-                  turned into a decade-long relationship with that community.
+                  Founded with a vision to stand beside vulnerable communities across Sri Lanka, Voice of Need Foundation began its journey on the ground — delivering urgent food relief, safe drinking water, healthcare, and education to underserved children and families.
                 </p>
               </FadeUp>
               <FadeUp delay={0.08}>
                 <p>
-                  That first classroom taught us something we&apos;ve carried into every
-                  program since: lasting change doesn&apos;t come from outside experts
-                  parachuting in with solutions. It comes from communities directing the
-                  work, with the right resources and training behind them.
+                  What began as compassionate grassroots assistance has evolved into a dedicated island-wide mission. From rural northern classrooms to central tea estate communities and coastal villages, our ongoing programs ensure every child receives the nourishment, dignity, and care needed for a brighter, healthier tomorrow.
                 </p>
               </FadeUp>
               <FadeUp delay={0.16}>
                 <p>
-                  Today we work across five program areas in five regions — still
-                  applying the same principle: listen first, build what&apos;s actually
-                  needed, and stay long enough to see it through.
+                  Today, Voice of Need works across key focus areas with a single guiding principle: listen first, deliver what is directly needed, and stay beside communities with total transparency, dignity, and enduring commitment.
                 </p>
               </FadeUp>
             </div>
@@ -74,9 +66,9 @@ export default function AboutPage() {
       </section>
 
       {/* Why We Exist */}
-      <section className="bg-forest py-24 text-white lg:py-32">
+      <section className="bg-forest-dark py-24 text-white lg:py-32">
         <Container className="mx-auto max-w-3xl text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
             Why We Exist
           </span>
           <p className="mt-6 text-balance font-display text-[1.75rem] leading-[1.35] sm:text-[2.25rem]">
@@ -91,7 +83,7 @@ export default function AboutPage() {
       <section className="bg-cream py-24 lg:py-32">
         <Container className="grid grid-cols-1 gap-12 sm:grid-cols-2">
           <FadeUp className="border-t-2 border-forest pt-6">
-            <h3 className="font-display text-2xl text-ink">Our Mission</h3>
+            <h3 className="font-display text-2xl uppercase tracking-tight text-ink">Our Mission</h3>
             <p className="mt-4 text-base leading-relaxed text-muted">
               To partner with communities on education, clean water, healthcare, the
               environment, and emergency relief — providing resources and expertise
@@ -99,7 +91,7 @@ export default function AboutPage() {
             </p>
           </FadeUp>
           <FadeUp delay={0.1} className="border-t-2 border-gold pt-6">
-            <h3 className="font-display text-2xl text-ink">Our Vision</h3>
+            <h3 className="font-display text-2xl uppercase tracking-tight text-ink">Our Vision</h3>
             <p className="mt-4 text-base leading-relaxed text-muted">
               A world where every community has the resources, infrastructure, and
               opportunity to shape its own future — without depending on outside aid to
@@ -130,7 +122,7 @@ export default function AboutPage() {
           <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {changeProcess.map((step, index) => (
               <FadeUp key={step.step} delay={index * 0.08} className="border-l-2 border-gold pl-5">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                   0{index + 1}
                 </span>
                 <h4 className="mt-3 font-display text-xl text-ink">{step.title}</h4>

@@ -19,10 +19,10 @@ export const impactMetrics: ImpactMetric[] = [
     description: "Long-term community partnerships across five regions (demo data).",
   },
   {
-    value: 89,
-    suffix: "%",
-    label: "Program funds to the field",
-    description: "Share of program spending that reaches communities directly (demo data).",
+    value: 1200,
+    suffix: "+",
+    label: "Volunteers mobilised",
+    description: "Local volunteers who give their time on the ground (demo data).",
   },
 ];
 

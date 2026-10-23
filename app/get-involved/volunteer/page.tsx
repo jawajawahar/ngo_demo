@@ -101,13 +101,13 @@ export default function VolunteerPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-forest py-24 text-white lg:py-32">
+      <section className="bg-forest-dark py-24 text-white lg:py-32">
         <Container>
           <SectionHeading eyebrow="From Our Volunteers" title="What it's like" light className="max-w-xl" />
           <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-3">
             {volunteerTestimonials.map((testimonial, index) => (
               <FadeUp key={testimonial.name} delay={index * 0.08}>
-                <Quote className="size-6 text-gold" aria-hidden="true" />
+                <Quote className="size-6 text-white/70" aria-hidden="true" />
                 <p className="mt-4 text-lg leading-snug">{testimonial.quote}</p>
                 <p className="mt-4 text-sm text-white/60">
                   {testimonial.name} — {testimonial.role}

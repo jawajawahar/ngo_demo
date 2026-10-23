@@ -43,39 +43,39 @@ export const governanceBoard = [
 export const timeline: TimelineEntry[] = [
   {
     year: "2015",
-    title: "Founded in Kolda Region",
+    title: "Grassroots Beginnings in Sri Lanka",
     description:
-      "Voice of Need began as a single classroom renovation project in partnership with one village council.",
+      "Voice of Need began its journey delivering urgent food relief, safe water, and school rebuilding alongside rural communities.",
   },
   {
     year: "2017",
-    title: "First community water program",
+    title: "Safe Drinking Water Initiative",
     description:
-      "Expanded into community development with our first well and water access initiative.",
+      "Expanded clean water access with community filtration units and wells in vulnerable dry-zone districts.",
   },
   {
     year: "2019",
-    title: "Healthcare program launched",
+    title: "Healthcare & Mobile Clinics",
     description:
-      "Introduced mobile clinics to reach highland communities without access to regular medical care.",
+      "Introduced mobile clinics to reach central tea estate communities and remote villages lacking medical care.",
   },
   {
     year: "2021",
-    title: "Emergency relief capacity built",
+    title: "Emergency Relief Capacity",
     description:
-      "Established a rapid-response team and pre-positioned supplies after flooding in Cerro Alto.",
+      "Established rapid-response food package distribution and essential aid during economic crises and seasonal monsoon floods.",
   },
   {
     year: "2023",
-    title: "Environment program launched",
+    title: "Education & Student Nutrition",
     description:
-      "Began large-scale reforestation and sustainable agriculture training across degraded farmland.",
+      "Launched student nutrition programs, classroom supplies, and sustainable livelihood support for families.",
   },
   {
     year: "2025",
-    title: "412,000+ lives reached",
+    title: "Island-Wide Dedicated Mission",
     description:
-      "Crossed a major milestone across all five programs, working in 64 partner communities (demo data).",
+      "Serving thousands of vulnerable children and families across northern, eastern, central, and coastal Sri Lanka.",
   },
 ];
 

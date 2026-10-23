@@ -91,7 +91,7 @@ export default async function StoryPage({
             </FadeUp>
             <TextReveal
               as="h1"
-              className="mt-6 text-balance font-display text-[2.25rem] leading-[1.1] text-ink sm:text-[3.25rem]"
+              className="mt-6 text-balance font-display text-[2.25rem] uppercase leading-[1.1] tracking-tight text-ink sm:text-[3.25rem]"
             >
               {story.title}
             </TextReveal>
@@ -176,7 +176,7 @@ export default async function StoryPage({
         {related.length > 0 && (
           <section className="bg-cream py-20 lg:py-28">
             <Container>
-              <h2 className="font-display text-2xl text-ink sm:text-3xl">Related stories</h2>
+              <h2 className="font-display text-2xl uppercase tracking-tight text-ink sm:text-3xl">Related stories</h2>
               <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                 {related.map((relatedStory) => (
                   <StoryCard key={relatedStory.slug} story={relatedStory} />

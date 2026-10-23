@@ -27,7 +27,7 @@ export default function StoryCard({
     >
       <ImageReveal
         className={cn(
-          "relative w-full rounded-lg",
+          "relative w-full rounded-md",
           size === "lg" ? "aspect-[16/10]" : "aspect-[4/3]"
         )}
       >
@@ -39,7 +39,7 @@ export default function StoryCard({
           className="object-cover transition-transform duration-700 ease-out group-hover/story:scale-105 motion-reduce:transition-none motion-reduce:group-hover/story:scale-100"
         />
       </ImageReveal>
-      <div className="mt-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-sage">
+      <div className="mt-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-gold">
         <span>{categoryLabels[story.category]}</span>
         <span className="text-muted">·</span>
         <span className="text-muted">{story.readTime}</span>

@@ -16,7 +16,7 @@ export default function ProgramCard({
       href={`/our-work/${program.slug}`}
       className="group/card block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
     >
-      <ImageReveal className="relative aspect-[4/5] w-full rounded-lg">
+      <ImageReveal className="relative aspect-[4/5] w-full rounded-md">
         <Image
           src={program.image}
           alt={program.imageAlt}
@@ -25,7 +25,6 @@ export default function ProgramCard({
           sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw"
           className="object-cover transition-transform duration-700 ease-out group-hover/card:scale-105 motion-reduce:transition-none motion-reduce:group-hover/card:scale-100"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/0 to-ink/0" />
       </ImageReveal>
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>

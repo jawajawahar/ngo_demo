@@ -2,12 +2,8 @@
 
 import { useState, type FormEvent, type ReactNode } from "react";
 import { Check, CreditCard, Heart, Lock } from "lucide-react";
-import { formatCurrency } from "@/lib/utils";
-import { cn } from "@/lib/utils";
-
-type Frequency = "once" | "monthly";
-
-const presetAmounts = [25, 50, 100, 250];
+import { donationCauses, getCurrency, type Frequency } from "@/data/donation";
+import { cn, formatCurrency } from "@/lib/utils";
 
 interface DonorInfo {
   firstName: string;
@@ -20,11 +16,34 @@ const initialDonor: DonorInfo = { firstName: "", lastName: "", email: "", countr
 
 type Step = 1 | 2 | 3 | 4;
 
-export default function DonateForm() {
+interface DonateFormProps {
+  initialAmount?: number;
+  initialCurrency?: string;
+  initialFrequency?: Frequency;
+  initialCause?: string;
+}
+
+export default function DonateForm({
+  initialAmount,
+  initialCurrency,
+  initialFrequency = "monthly",
+  initialCause,
+}: DonateFormProps) {
+  const currency = getCurrency(initialCurrency);
+  const presetAmounts = currency.presets;
+  const startAmount = initialAmount && initialAmount > 0 ? initialAmount : presetAmounts[1];
+  const isPreset = presetAmounts.includes(startAmount);
   const [step, setStep] = useState<Step>(1);
-  const [frequency, setFrequency] = useState<Frequency>("monthly");
-  const [amount, setAmount] = useState<number>(50);
-  const [customAmount, setCustomAmount] = useState("");
+  const [frequency, setFrequency] = useState<Frequency>(initialFrequency);
+  const [cause, setCause] = useState(
+    donationCauses.some((option) => option.value === initialCause)
+      ? (initialCause as string)
+      : donationCauses[0].value
+  );
+  const [amount, setAmount] = useState<number>(isPreset ? startAmount : presetAmounts[1]);
+  const [customAmount, setCustomAmount] = useState(isPreset ? "" : String(startAmount));
+  const money = (value: number) => formatCurrency(value, currency.code);
+  const causeLabel = donationCauses.find((option) => option.value === cause)?.label;
   const [donor, setDonor] = useState<DonorInfo>(initialDonor);
   const [donorErrors, setDonorErrors] = useState<Partial<Record<keyof DonorInfo, string>>>({});
   const [cardName, setCardName] = useState("");
@@ -72,7 +91,7 @@ export default function DonateForm() {
         </h2>
         <p className="max-w-md text-muted">
           Your {frequency === "monthly" ? "monthly" : "one-time"} gift of{" "}
-          {formatCurrency(selectedAmount)} would go directly toward the programs above.
+          {money(selectedAmount)} would go toward {causeLabel?.toLowerCase()}.
           This is a demo checkout — no payment was processed and no charge was made.
         </p>
         <p className="mt-2 text-xs uppercase tracking-[0.14em] text-muted">
@@ -133,7 +152,27 @@ export default function DonateForm() {
           </div>
 
           <div>
-            <span className="mb-3 block text-sm font-medium text-ink">Amount</span>
+            <label htmlFor="d-cause" className="mb-3 block text-sm font-medium text-ink">
+              Cause
+            </label>
+            <select
+              id="d-cause"
+              value={cause}
+              onChange={(event) => setCause(event.target.value)}
+              className="w-full rounded-md border border-ink/15 bg-white px-4 py-3 text-sm font-semibold text-ink outline-none focus:border-forest"
+            >
+              {donationCauses.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <span className="mb-3 block text-sm font-medium text-ink">
+              Amount ({currency.code})
+            </span>
             <div className="grid grid-cols-4 gap-3">
               {presetAmounts.map((preset) => (
                 <button
@@ -144,14 +183,15 @@ export default function DonateForm() {
                     setCustomAmount("");
                   }}
                   className={cn(
-                    "rounded-md border px-3 py-4 text-center font-display text-lg transition-colors",
+                    "rounded-md border-2 px-2 py-4 text-center font-display text-base transition-colors sm:text-lg",
                     amount === preset && !customAmount
                       ? "border-forest bg-forest text-cream"
                       : "border-ink/15 text-ink hover:border-ink/40"
                   )}
                   aria-pressed={amount === preset && !customAmount}
                 >
-                  ${preset}
+                  {currency.symbol}
+                  {preset.toLocaleString("en-US")}
                 </button>
               ))}
             </div>
@@ -159,7 +199,7 @@ export default function DonateForm() {
               Or enter a custom amount
             </label>
             <div className="mt-2 flex items-center rounded-md border border-ink/15 px-4 py-3 focus-within:border-ink/40">
-              <span className="mr-1 text-ink/60">$</span>
+              <span className="mr-1 text-ink/60">{currency.symbol}</span>
               <input
                 id="custom-amount"
                 type="number"
@@ -176,10 +216,10 @@ export default function DonateForm() {
           <button
             type="submit"
             disabled={selectedAmount <= 0}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-8 py-3.5 text-sm font-medium text-cream transition-colors hover:bg-forest-dark disabled:cursor-not-allowed disabled:opacity-50"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-[15px] font-bold text-white transition-colors hover:bg-gold-dark disabled:cursor-not-allowed disabled:opacity-50"
           >
             <Heart className="size-4" aria-hidden="true" />
-            Continue with {formatCurrency(selectedAmount || 0)}
+            Continue with {money(selectedAmount || 0)}
             {frequency === "monthly" && selectedAmount > 0 ? "/mo" : ""}
           </button>
         </form>
@@ -284,7 +324,7 @@ export default function DonateForm() {
             >
               {processing
                 ? "Processing…"
-                : `Confirm ${formatCurrency(selectedAmount)}${frequency === "monthly" ? "/mo" : ""} gift`}
+                : `Confirm ${money(selectedAmount)}${frequency === "monthly" ? "/mo" : ""} gift`}
             </button>
           </div>
         </form>
@@ -328,11 +368,11 @@ function TextField({
         aria-describedby={error ? `${id}-error` : undefined}
         className={cn(
           "w-full rounded-md border bg-white px-4 py-3 text-sm text-ink outline-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:bg-ink/5 disabled:text-ink/40",
-          error ? "border-red-400" : "border-ink/15 focus:border-ink/40"
+          error ? "border-gold" : "border-ink/15 focus:border-ink/40"
         )}
       />
       {error && (
-        <p id={`${id}-error`} className="mt-1.5 text-xs text-red-500">
+        <p id={`${id}-error`} className="mt-1.5 text-xs text-gold">
           {error}
         </p>
       )}

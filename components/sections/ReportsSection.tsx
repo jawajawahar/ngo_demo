@@ -1,7 +1,6 @@
 import { FileText } from "lucide-react";
 import Container from "@/components/layout/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import DemoBadge from "@/components/ui/DemoBadge";
 import FadeUp from "@/components/animations/FadeUp";
 import { impactReports } from "@/data/impact";
 
@@ -15,7 +14,6 @@ export default function ReportsSection() {
             title="Reports & financials"
             className="max-w-xl"
           />
-          <DemoBadge />
         </div>
 
         <div className="flex flex-col divide-y divide-ink/10 border-y border-ink/10">

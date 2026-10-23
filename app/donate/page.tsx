@@ -4,7 +4,6 @@ import { ShieldCheck } from "lucide-react";
 import Container from "@/components/layout/Container";
 import TextReveal from "@/components/animations/TextReveal";
 import FadeUp from "@/components/animations/FadeUp";
-import DemoBadge from "@/components/ui/DemoBadge";
 import DonateForm from "@/components/forms/DonateForm";
 
 export const metadata: Metadata = {
@@ -20,40 +19,55 @@ const giftImpact = [
   { amount: "$250", impact: "Supports a family through emergency shelter and food relief (demo data)." },
 ];
 
-export default function DonatePage() {
+export default async function DonatePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await searchParams;
+  const first = (value: string | string[] | undefined) =>
+    Array.isArray(value) ? value[0] : value;
+  const amount = Number(first(params.amount));
+  const frequency = first(params.frequency);
+
   return (
-    <section className="pt-36 pb-24 lg:pt-44 lg:pb-32">
+    <section className="bg-cream pt-40 pb-24 lg:pt-48 lg:pb-32">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <FadeUp>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
               Donate
             </span>
           </FadeUp>
           <TextReveal
             as="h1"
-            className="mt-4 text-balance font-display text-[2.25rem] leading-[1.1] text-ink sm:text-[3rem]"
+            className="mt-4 text-balance font-display text-[2.25rem] uppercase leading-[1.1] tracking-tight text-ink sm:text-[3rem]"
           >
             Your gift, directed by the community that needs it.
           </TextReveal>
           <FadeUp delay={0.1}>
             <p className="mx-auto mt-5 max-w-lg text-base text-muted">
-              89% of program funds go directly to the field (demo data). This checkout
-              is a demonstration — no real payment is processed.
+              Under our 100% Donation Policy, every gift goes to the cause you choose.
+              This checkout is a demonstration — no real payment is processed.
             </p>
           </FadeUp>
         </div>
 
         <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-16 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <DonateForm />
+          <div className="rounded-md border border-ink/10 bg-white p-6 sm:p-10 lg:col-span-7">
+            <DonateForm
+              key={JSON.stringify(params)}
+              initialAmount={Number.isFinite(amount) ? amount : undefined}
+              initialCurrency={first(params.currency)}
+              initialFrequency={frequency === "once" || frequency === "monthly" ? frequency : undefined}
+              initialCause={first(params.cause)}
+            />
           </div>
 
           <aside className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <div className="flex items-center gap-2">
-                <h2 className="font-display text-lg text-ink">Where your gift goes</h2>
-                <DemoBadge />
+                <h2 className="font-display text-lg uppercase tracking-tight text-ink">Where your gift goes</h2>
               </div>
               <ul className="mt-5 flex flex-col divide-y divide-ink/10 border-t border-ink/10">
                 {giftImpact.map((item) => (

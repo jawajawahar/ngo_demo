@@ -2,23 +2,27 @@
 
 @theme inline {
   /* Color system */
-  --color-forest: #12372a;
-  --color-forest-dark: #0b2019;
-  --color-sage: #4f7d61;
-  --color-gold: #f4b942;
-  --color-cream: #f8f7f2;
-  --color-ink: #111613;
+  /* Brand palette: #006738 (green), #D70350 (crimson), #FFFFFF (white).
+     Tints/shades below are mixes of those colours only. */
+  --color-forest: #006738;
+  --color-forest-dark: #006738;
+  --color-sage: #006738;
+  --color-mint: color-mix(in srgb, #006738 7%, #ffffff);
+  --color-gold: #d70350;
+  --color-gold-dark: color-mix(in srgb, #d70350 85%, #000000);
+  --color-cream: color-mix(in srgb, #006738 4%, #ffffff);
+  --color-ink: #1c1c1c;
   --color-white: #ffffff;
-  --color-muted: #6b746e;
+  --color-muted: #5e5e5e;
 
   /* Typography */
-  --font-display: var(--font-dm-serif), Georgia, serif;
+  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* Radii */
   --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
 
   /* Easing */
   --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
@@ -46,9 +50,9 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
   }
 
   a,
@@ -104,6 +108,19 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .font-display {
+    font-weight: 800;
+    letter-spacing: -0.025em;
+  }
+
+  .shadow-card {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+  }
+
+  .shadow-float {
+    box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.25);
   }
 }
 

@@ -37,7 +37,7 @@ export default function NewsletterForm({ light = false }: { light?: boolean }) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:flex-row sm:items-start">
-      <div className="flex-1">
+      <div className="min-w-0 flex-1">
         <label htmlFor="newsletter-email" className="sr-only">
           Email address
         </label>
@@ -52,7 +52,7 @@ export default function NewsletterForm({ light = false }: { light?: boolean }) {
           }}
           placeholder="you@example.com"
           className={cn(
-            "w-full rounded-full border bg-transparent px-5 py-3 text-sm outline-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:min-w-72",
+            "w-full rounded-md border bg-transparent px-5 py-3 text-sm outline-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold",
             light
               ? "border-white/25 text-white placeholder:text-white/50 focus:border-white/60"
               : "border-ink/20 text-ink placeholder:text-muted focus:border-ink/50"
@@ -61,7 +61,7 @@ export default function NewsletterForm({ light = false }: { light?: boolean }) {
           aria-describedby={status === "error" ? "newsletter-error" : undefined}
         />
         {status === "error" && (
-          <p id="newsletter-error" className="mt-2 text-xs text-red-400">
+          <p id="newsletter-error" className={cn("mt-2 text-xs", light ? "text-white" : "text-gold")}>
             Please enter a valid email address.
           </p>
         )}
@@ -70,8 +70,8 @@ export default function NewsletterForm({ light = false }: { light?: boolean }) {
         type="submit"
         disabled={status === "loading"}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:opacity-60",
-          light ? "bg-gold text-forest-dark hover:bg-gold/90" : "bg-forest text-cream hover:bg-forest-dark"
+          "inline-flex items-center justify-center gap-2 rounded-md px-6 py-3 text-sm font-bold uppercase transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold disabled:opacity-60",
+          light ? "bg-gold text-white hover:bg-gold-dark" : "bg-gold text-white hover:bg-gold-dark"
         )}
       >
         {status === "loading" ? "Subscribing…" : "Subscribe"}

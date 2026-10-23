@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import PageHero from "@/components/layout/PageHero";
 import Container from "@/components/layout/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
-import DemoBadge from "@/components/ui/DemoBadge";
 import FadeUp from "@/components/animations/FadeUp";
 import ImageReveal from "@/components/animations/ImageReveal";
 import CTABand from "@/components/sections/CTABand";
@@ -60,7 +59,7 @@ export default async function ProgramPage({
       <section className="bg-white py-24 lg:py-32">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           <FadeUp>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
               The Problem
             </span>
             <p className="mt-5 font-display text-2xl leading-snug text-ink sm:text-3xl">
@@ -68,7 +67,7 @@ export default async function ProgramPage({
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
               Our Approach
             </span>
             <p className="mt-5 text-lg leading-relaxed text-muted">{program.approach}</p>
@@ -97,8 +96,7 @@ export default async function ProgramPage({
       <section className="bg-white py-20 lg:py-24">
         <Container>
           <div className="mb-10 flex items-center gap-3">
-            <h2 className="font-display text-2xl text-ink">Program impact</h2>
-            <DemoBadge />
+            <h2 className="font-display text-2xl uppercase tracking-tight text-ink">Program impact</h2>
           </div>
           <div className="grid grid-cols-1 gap-10 border-y border-ink/10 py-10 sm:grid-cols-3">
             {program.stats.map((stat, index) => (
@@ -113,7 +111,7 @@ export default async function ProgramPage({
 
       {/* Project Story */}
       {story && (
-        <section className="bg-forest py-24 text-white lg:py-32">
+        <section className="bg-forest-dark py-24 text-white lg:py-32">
           <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
             <ImageReveal className="relative aspect-[4/5] w-full rounded-lg lg:col-span-5">
               <Image
@@ -125,10 +123,10 @@ export default async function ProgramPage({
               />
             </ImageReveal>
             <div className="lg:col-span-7 lg:pl-8">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
                 Project Story
               </span>
-              <h2 className="mt-4 font-display text-[2rem] leading-[1.15] sm:text-[2.5rem]">
+              <h2 className="mt-4 font-display text-[2rem] uppercase leading-[1.15] tracking-tight sm:text-[2.5rem]">
                 {story.title}
               </h2>
               <p className="mt-5 max-w-lg text-white/80">{story.excerpt}</p>

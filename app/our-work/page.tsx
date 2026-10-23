@@ -7,7 +7,6 @@ import Button from "@/components/ui/Button";
 import FadeUp from "@/components/animations/FadeUp";
 import ImageReveal from "@/components/animations/ImageReveal";
 import ProgramCard from "@/components/cards/ProgramCard";
-import DemoBadge from "@/components/ui/DemoBadge";
 import CTABand from "@/components/sections/CTABand";
 import { programs } from "@/data/programs";
 import { getStoryBySlug } from "@/data/stories";
@@ -73,12 +72,11 @@ export default function OurWorkPage() {
           </ImageReveal>
           <div className="lg:col-span-7 lg:pl-8">
             <div className="flex items-center gap-3">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
                 Featured Project
               </span>
-              <DemoBadge />
             </div>
-            <h2 className="mt-4 font-display text-[2rem] leading-[1.15] text-ink sm:text-[2.5rem]">
+            <h2 className="mt-4 font-display text-[2rem] uppercase leading-[1.15] tracking-tight text-ink sm:text-[2.5rem]">
               {featuredProgram.name}: {featuredProgram.shortDescription}
             </h2>
             <div className="mt-6 grid grid-cols-3 gap-4 border-y border-ink/10 py-6">
@@ -100,9 +98,9 @@ export default function OurWorkPage() {
 
       {/* Community Story */}
       {communityStory && (
-        <section className="bg-forest py-24 text-white lg:py-32">
+        <section className="bg-forest-dark py-24 text-white lg:py-32">
           <Container className="mx-auto max-w-3xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">
               Community Story
             </span>
             <p className="mt-6 text-balance font-display text-[1.75rem] leading-[1.35] sm:text-[2.25rem]">

@@ -17,13 +17,13 @@ export default function ContactPage() {
       <Container>
         <div className="max-w-2xl">
           <FadeUp>
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-sage">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">
               Contact
             </span>
           </FadeUp>
           <TextReveal
             as="h1"
-            className="mt-4 text-balance font-display text-[2.25rem] leading-[1.1] text-ink sm:text-[3rem]"
+            className="mt-4 text-balance font-display text-[2.25rem] uppercase leading-[1.1] tracking-tight text-ink sm:text-[3rem]"
           >
             We&apos;d like to hear from you.
           </TextReveal>
@@ -42,7 +42,7 @@ export default function ContactPage() {
 
           <aside className="flex flex-col gap-10 lg:col-span-5">
             <div>
-              <h2 className="font-display text-lg text-ink">Reach us directly</h2>
+              <h2 className="font-display text-lg uppercase tracking-tight text-ink">Reach us directly</h2>
               <ul className="mt-5 flex flex-col gap-4 text-sm text-ink/80">
                 <li className="flex items-start gap-3">
                   <Mail className="mt-0.5 size-4 shrink-0 text-forest" aria-hidden="true" />
