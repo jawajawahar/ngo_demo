@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Quote, ArrowLeft, ArrowRight, Play, Pause } from "lucide-react";
+import { Quote } from "lucide-react";
 import Container from "@/components/layout/Container";
 import FadeUp from "@/components/animations/FadeUp";
 import { testimonials } from "@/data/testimonials";
@@ -262,66 +262,35 @@ export default function TestimonialsSection() {
               </div>
             </div>
 
-            {/* Right Column: Connected Testimonial Quote Card */}
-            <div className="lg:col-span-7 relative overflow-hidden rounded-3xl border border-forest/15 bg-gradient-to-br from-[#002b16] via-[#001f11] to-black text-white shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] p-7 sm:p-10 lg:p-14 flex flex-col justify-between">
+            {/* Right Column: Aesthetic Light Testimonial Quote Card */}
+            <div className="lg:col-span-7 relative overflow-hidden rounded-3xl border border-[#e8e2d8] bg-gradient-to-br from-white via-[#fcfbf8] to-[#f6f2ea] text-ink shadow-[0_20px_50px_-15px_rgba(0,40,25,0.06),0_4px_16px_rgba(0,0,0,0.02)] p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+              {/* Subtle aesthetic watermark quote icon */}
               <Quote
-                className="pointer-events-none absolute -bottom-8 right-6 size-48 text-white/[0.03] select-none"
+                className="pointer-events-none absolute -bottom-8 right-6 size-56 text-forest/[0.035] select-none"
                 aria-hidden="true"
               />
 
-              <div className="relative z-10 my-auto">
+              <div className="relative z-10">
+                {/* Decorative small quote icon */}
+                <Quote className="size-10 sm:size-12 text-gold/40 mb-6 shrink-0" aria-hidden="true" />
+
                 <div key={currentFeatured.id} className="animate-fadeIn">
-                  <blockquote className="font-serif text-lg sm:text-2xl lg:text-[1.65rem] italic leading-relaxed text-white/95 transition-opacity duration-300">
+                  <blockquote className="font-serif text-xl sm:text-2xl lg:text-[1.85rem] italic leading-[1.58] text-ink/90">
                     &ldquo;{currentFeatured.quote}&rdquo;
                   </blockquote>
-                </div>
-              </div>
 
-              {/* Slider Navigation & Cylinder Controls */}
-              <div className="mt-8 pt-6 border-t border-white/15 flex items-center justify-between gap-4 relative z-10">
-                {/* Step indicator dots */}
-                <div className="flex items-center gap-2">
-                  {testimonials.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setActiveIndex(idx)}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        idx === activeIndex
-                          ? "w-8 bg-gold"
-                          : "w-2 bg-white/30 hover:bg-white/60"
-                      }`}
-                      aria-label={`Roll to beneficiary ${idx + 1}`}
-                    />
-                  ))}
-                  <span className="ml-2 text-xs font-semibold text-white/60">
-                    0{activeIndex + 1} / 0{total}
-                  </span>
-                </div>
-
-                {/* Previous / Next Roll Buttons */}
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setIsAutoPlaying((prev) => !prev)}
-                    className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-gold hover:border-gold transition-all"
-                    aria-label={isAutoPlaying ? "Pause rolling" : "Play rolling"}
-                    title={isAutoPlaying ? "Pause auto-roll" : "Play auto-roll"}
-                  >
-                    {isAutoPlaying ? <Pause className="size-3.5" /> : <Play className="size-3.5 ml-0.5" />}
-                  </button>
-                  <button
-                    onClick={handlePrev}
-                    className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-gold hover:border-gold transition-all"
-                    aria-label="Previous beneficiary"
-                  >
-                    <ArrowLeft className="size-4" />
-                  </button>
-                  <button
-                    onClick={handleNext}
-                    className="flex size-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white hover:bg-gold hover:border-gold transition-all"
-                    aria-label="Next beneficiary"
-                  >
-                    <ArrowRight className="size-4" />
-                  </button>
+                  {/* Beneficiary attribution in the light card */}
+                  <div className="mt-8 pt-6 border-t border-forest/10 flex flex-col">
+                    <h3 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-forest">
+                      {currentFeatured.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-medium text-muted mt-0.5">
+                      {currentFeatured.role} • <span className="text-forest/80 font-semibold">{currentFeatured.location}</span>
+                    </p>
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-gold mt-1.5">
+                      {currentFeatured.cause}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
