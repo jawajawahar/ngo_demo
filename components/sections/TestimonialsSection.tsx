@@ -179,11 +179,11 @@ export default function TestimonialsSection() {
 
         {/* 3D Cylindrical Roller & Testimonial Showcase */}
         <FadeUp delay={0.2} className="mt-14 sm:mt-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Column: 3D Revolving Cylinder Image Wheel (உருளை வடிவம்) */}
             <div
-              className="lg:col-span-5 relative flex items-center justify-center min-h-[340px] sm:min-h-[370px] lg:min-h-[390px] w-full select-none cursor-grab active:cursor-grabbing overflow-visible"
+              className="lg:col-span-5 relative flex items-center justify-center min-h-[460px] sm:min-h-[500px] lg:min-h-[520px] w-full select-none cursor-grab active:cursor-grabbing overflow-visible"
               onMouseEnter={() => setIsAutoPlaying(false)}
               onMouseLeave={() => setIsAutoPlaying(true)}
               onTouchStart={onTouchStart}
@@ -213,7 +213,7 @@ export default function TestimonialsSection() {
                         ...style,
                         transition: "all 650ms cubic-bezier(0.25, 1, 0.5, 1)",
                       }}
-                      className={`absolute w-[210px] sm:w-[240px] lg:w-[255px] h-[300px] sm:h-[335px] lg:h-[355px] rounded-3xl overflow-hidden border-2 bg-black transition-all duration-700 ${
+                      className={`absolute w-[240px] sm:w-[275px] lg:w-[290px] h-[380px] sm:h-[430px] lg:h-[470px] rounded-[2.5rem] overflow-hidden border-2 bg-black transition-all duration-700 ${
                         isCurrent
                           ? "border-forest/40 ring-4 ring-gold/40 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7),0_0_35px_rgba(215,3,80,0.25)] cursor-default"
                           : "border-white/20 hover:border-gold/60 cursor-pointer shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
@@ -233,17 +233,17 @@ export default function TestimonialsSection() {
 
                       {/* Active Card Details Floating at Bottom */}
                       {isCurrent && (
-                        <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 z-10 animate-fadeIn">
-                          <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-gold mb-1">
+                        <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10 animate-fadeIn">
+                          <p className="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">
                             {item.cause}
                           </p>
-                          <h3 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">
+                          <h3 className="font-display text-2xl font-bold tracking-tight text-white leading-tight">
                             {item.name}
                           </h3>
-                          <p className="text-xs sm:text-sm font-medium text-white/90 mt-0.5">
+                          <p className="text-xs sm:text-sm font-medium text-white/90 mt-1">
                             {item.role}
                           </p>
-                          <p className="text-[11px] sm:text-xs text-white/70 mt-0.5">
+                          <p className="text-xs text-white/70 mt-0.5">
                             {item.location}
                           </p>
                         </div>
@@ -262,20 +262,20 @@ export default function TestimonialsSection() {
               </div>
             </div>
 
-            {/* Right Column: Aesthetic Light Testimonial Quote Card */}
-            <div className="lg:col-span-7 relative overflow-hidden rounded-3xl border border-[#e8e2d8] bg-gradient-to-br from-white via-[#fcfbf8] to-[#f6f2ea] text-ink shadow-[0_20px_50px_-15px_rgba(0,40,25,0.06),0_4px_16px_rgba(0,0,0,0.02)] p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+            {/* Right Column: Aesthetic Compact Light Testimonial Quote Card */}
+            <div className="lg:col-span-7 relative overflow-hidden rounded-3xl border border-[#e8e2d8] bg-gradient-to-br from-white via-[#fcfbf8] to-[#f6f2ea] text-ink shadow-[0_20px_50px_-15px_rgba(0,40,25,0.06),0_4px_16px_rgba(0,0,0,0.02)] p-7 sm:p-10 lg:p-12 flex flex-col justify-center">
               {/* Subtle aesthetic watermark quote icon */}
               <Quote
-                className="pointer-events-none absolute -bottom-8 right-6 size-44 text-forest/[0.035] select-none"
+                className="pointer-events-none absolute -bottom-8 right-6 size-48 text-forest/[0.035] select-none"
                 aria-hidden="true"
               />
 
               <div className="relative z-10">
                 {/* Decorative small quote icon */}
-                <Quote className="size-8 sm:size-10 text-gold/40 mb-4 shrink-0" aria-hidden="true" />
+                <Quote className="size-10 sm:size-11 text-gold/40 mb-5 shrink-0" aria-hidden="true" />
 
                 <div key={currentFeatured.id} className="animate-fadeIn">
-                  <blockquote className="font-serif text-lg sm:text-xl lg:text-2xl italic leading-[1.6] text-ink/90">
+                  <blockquote className="font-serif text-xl sm:text-2xl lg:text-[1.8rem] italic leading-[1.62] text-ink/90">
                     &ldquo;{currentFeatured.quote}&rdquo;
                   </blockquote>
                 </div>
