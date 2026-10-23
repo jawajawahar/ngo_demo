@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Calendar, MapPin, Clock, Radio, CheckCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Container from "@/components/layout/Container";
 import FadeUp from "@/components/animations/FadeUp";
 import { getAllUpdates } from "@/data/updates";
@@ -50,8 +50,8 @@ export default function UpdatesIndexPage() {
                 href={`/updates/${item.slug}`}
                 className="group relative flex flex-col justify-between h-full rounded-3xl border border-[#e8e2d8] bg-white overflow-hidden shadow-sm hover:shadow-xl hover:border-forest/40 transition-all duration-400"
               >
-                {/* Image */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                {/* Clean Photography - No Badges */}
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
                   <Image
                     src={item.image}
                     alt={item.imageAlt}
@@ -59,48 +59,33 @@ export default function UpdatesIndexPage() {
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-600"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                    <span className="rounded-full bg-forest/90 backdrop-blur-md px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm">
-                      {item.category}
-                    </span>
-                    <span className="rounded-full bg-black/60 backdrop-blur-md px-2.5 py-0.5 text-[11px] font-semibold text-white/90">
-                      {item.readTime}
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-white/95">
-                    <span className="flex items-center gap-1.5 truncate">
-                      <MapPin className="size-3 text-gold" />
-                      {item.location}
-                    </span>
-                    <span className="flex items-center gap-1.5 text-white/80">
-                      <Calendar className="size-3" />
-                      {item.date}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
                   <div>
+                    <div className="flex items-center gap-2 text-[11px] font-semibold text-muted uppercase tracking-wider mb-2">
+                      <span className="text-forest font-bold">{item.location}</span>
+                      <span>•</span>
+                      <span>{item.date}</span>
+                    </div>
+
                     <h2 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-ink group-hover:text-forest transition-colors leading-snug">
                       {item.title}
                     </h2>
+
                     <p className="mt-2.5 text-sm leading-relaxed text-muted font-serif line-clamp-3">
                       {item.shortSummary}
                     </p>
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-forest/10 flex items-center justify-between">
-                    <span className="text-xs font-semibold text-forest flex items-center gap-1.5">
-                      <CheckCircle2 className="size-3.5 text-emerald-600" />
-                      {item.impactStats[0].value} {item.impactStats[0].label}
+                    <span className="text-xs text-muted font-medium">
+                      {item.category}
                     </span>
 
-                    <span className="text-xs font-bold uppercase tracking-wider text-forest group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                      <span>Read Story</span>
+                    <span className="text-xs font-bold uppercase tracking-wider text-forest group-hover:text-gold transition-colors inline-flex items-center gap-1">
+                      <span>Read Dispatch</span>
                       <ArrowRight className="size-3.5" />
                     </span>
                   </div>

@@ -4,14 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { 
   ArrowLeft, 
-  Calendar, 
-  MapPin, 
-  Clock, 
-  Share2, 
   Quote as QuoteIcon, 
   CheckCircle2, 
   ArrowRight,
-  ShieldCheck,
   HeartHandshake
 } from "lucide-react";
 import Container from "@/components/layout/Container";
@@ -93,29 +88,17 @@ export default async function UpdateDetailPage({ params }: UpdatePageProps) {
       <header className="relative pt-12 sm:pt-16 pb-10">
         <Container className="max-w-4xl">
           <FadeUp>
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-crimson px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-sm">
-                {update.category}
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-xs text-muted font-semibold">
-                <Calendar className="size-3.5 text-gold" />
-                {update.date}
-              </span>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wider text-forest">
+              <span>{update.category}</span>
               <span className="text-muted/60">•</span>
-              <span className="inline-flex items-center gap-1.5 text-xs text-forest font-semibold">
-                <MapPin className="size-3.5" />
-                {update.location}
-              </span>
+              <span className="text-muted">{update.location}</span>
               <span className="text-muted/60">•</span>
-              <span className="inline-flex items-center gap-1 text-xs text-muted">
-                <Clock className="size-3.5" />
-                {update.readTime}
-              </span>
+              <span className="text-muted">{update.date}</span>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.08}>
-            <h1 className="mt-5 font-display text-3xl sm:text-4xl lg:text-[2.85rem] font-bold uppercase tracking-tight text-ink leading-[1.12]">
+            <h1 className="mt-4 font-display text-3xl sm:text-4xl lg:text-[2.85rem] font-bold uppercase tracking-tight text-ink leading-[1.12]">
               {update.title}
             </h1>
           </FadeUp>
@@ -126,38 +109,19 @@ export default async function UpdateDetailPage({ params }: UpdatePageProps) {
             </p>
           </FadeUp>
 
-          {/* Field Officer Byline */}
+          {/* Editorial Byline */}
           <FadeUp delay={0.18}>
-            <div className="mt-8 pt-6 border-t border-forest/10 flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-3.5">
-                <div className="relative size-12 rounded-full overflow-hidden ring-2 ring-forest/20 shadow-sm">
-                  <Image
-                    src={update.fieldOfficer.avatar}
-                    alt={update.fieldOfficer.name}
-                    fill
-                    className="object-cover"
-                    sizes="48px"
-                  />
-                </div>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <p className="text-sm font-bold text-ink leading-tight">
-                      {update.fieldOfficer.name}
-                    </p>
-                    <ShieldCheck className="size-4 text-emerald-600" aria-label="Verified Ground Officer" />
-                  </div>
-                  <p className="text-xs text-muted mt-0.5">
-                    {update.fieldOfficer.role}
-                  </p>
-                </div>
-              </div>
+            <div className="mt-6 pt-5 border-t border-forest/10 flex items-center justify-between flex-wrap gap-4">
+              <p className="text-xs sm:text-sm text-muted font-medium">
+                Field report by <strong className="text-ink">{update.fieldOfficer.name}</strong>, {update.fieldOfficer.role}
+              </p>
 
               <div className="flex items-center gap-2">
                 <Link
                   href="/donate"
                   className="rounded-xl bg-forest px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm hover:bg-forest-dark transition-all"
                 >
-                  Support this Appeal
+                  Support this Work
                 </Link>
               </div>
             </div>
@@ -334,18 +298,14 @@ export default async function UpdateDetailPage({ params }: UpdatePageProps) {
                       sizes="(min-width: 768px) 300px, 100vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute top-2 left-2">
-                      <span className="rounded-md bg-forest/90 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
-                        {item.category}
-                      </span>
-                    </div>
                   </div>
 
                   <div className="p-5 flex flex-col justify-between flex-1">
                     <div>
-                      <p className="text-[11px] text-muted font-medium mb-1 flex items-center gap-1">
-                        <Calendar className="size-3 text-gold" />
-                        {item.date}
+                      <p className="text-[11px] text-muted font-medium mb-1.5 uppercase tracking-wider">
+                        <span className="text-forest font-bold">{item.location}</span>
+                        <span className="mx-1.5">•</span>
+                        <span>{item.date}</span>
                       </p>
                       <h4 className="font-display text-base font-bold uppercase tracking-tight text-ink group-hover:text-forest transition-colors leading-snug line-clamp-2">
                         {item.title}
