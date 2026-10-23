@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Quote } from "lucide-react";
 import Container from "@/components/layout/Container";
 import FadeUp from "@/components/animations/FadeUp";
@@ -255,11 +254,6 @@ export default function TestimonialsSection() {
                   );
                 })}
               </div>
-
-              {/* Gentle Helper hint for users */}
-              <div className="absolute -bottom-6 flex items-center gap-2 text-[11px] font-medium tracking-wide text-forest/70">
-                <span>Click or swipe to roll beneficiaries</span>
-              </div>
             </div>
 
             {/* Right Column: Aesthetic Compact Light Testimonial Quote Card */}
@@ -280,76 +274,6 @@ export default function TestimonialsSection() {
                   </blockquote>
                 </div>
               </div>
-            </div>
-          </div>
-        </FadeUp>
-
-        {/* 3 Secondary Community Stories Cards */}
-        <div className="mt-14 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
-          {testimonials.slice(1, 4).map((item, idx) => (
-            <FadeUp key={item.id} delay={0.1 + idx * 0.08} className="flex flex-col h-full">
-              <div
-                onClick={() => {
-                  const targetIndex = testimonials.findIndex((t) => t.id === item.id);
-                  if (targetIndex !== -1) setActiveIndex(targetIndex);
-                }}
-                className="group relative flex flex-col justify-between h-full rounded-2xl border border-forest/15 bg-white p-6 sm:p-7 shadow-[0_10px_25px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(0,56,34,0.1)] hover:border-forest/35 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-              >
-                <div>
-                  <p className="text-sm leading-relaxed text-ink/80 italic font-serif">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-5 border-t border-forest/10 flex items-center gap-3.5">
-                  <div className="relative size-11 rounded-full overflow-hidden ring-1 ring-forest/20 shrink-0">
-                    <Image
-                      src={item.avatar}
-                      alt={item.name}
-                      fill
-                      sizes="44px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="text-sm font-bold text-ink truncate group-hover:text-forest transition-colors">
-                      {item.name}
-                    </h4>
-                    <p className="text-xs text-muted truncate">
-                      {item.role}
-                    </p>
-                    <p className="text-[11px] font-medium text-forest/75 truncate">
-                      {item.location}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </FadeUp>
-          ))}
-        </div>
-
-        {/* Action Button Banner */}
-        <FadeUp delay={0.3} className="mt-14 sm:mt-16 text-center">
-          <div className="mx-auto max-w-xl">
-            <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-ink">
-              Every Contribution Reaches The Field
-            </h3>
-            <p className="mt-2 text-sm text-muted">
-              Choose an appeal or project close to your heart and bring hope to families in Sri Lanka today.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/donate"
-                className="rounded-xl bg-gold px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md hover:bg-gold-dark hover:shadow-lg hover:-translate-y-0.5 transition-all"
-              >
-                Donate Now
-              </Link>
-              <Link
-                href="/our-work"
-                className="rounded-xl border border-forest/25 bg-white px-6 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-forest hover:bg-forest hover:text-white hover:-translate-y-0.5 transition-all"
-              >
-                View Our Appeals
-              </Link>
             </div>
           </div>
         </FadeUp>
