@@ -201,59 +201,109 @@ export default function TestimonialsSection() {
                 }}
               >
                 {testimonials.map((item, idx) => {
+                  let diff = (idx - activeIndex) % total;
+                  if (diff > total / 2) diff -= total;
+                  if (diff < -total / 2) diff += total;
+
                   const style = getCylinderStyle(idx);
-                  const isCurrent = idx === activeIndex;
+                  const isCurrent = diff === 0;
 
                   return (
                     <div
                       key={item.id}
-                      onClick={() => setActiveIndex(idx)}
                       style={{
                         ...style,
                         transition: "all 650ms cubic-bezier(0.25, 1, 0.5, 1)",
                       }}
-                      className={`absolute w-[240px] sm:w-[275px] lg:w-[290px] h-[380px] sm:h-[430px] lg:h-[470px] rounded-[2.5rem] overflow-hidden border-2 bg-black transition-all duration-700 ${
-                        isCurrent
-                          ? "border-forest/40 ring-4 ring-gold/40 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7),0_0_35px_rgba(215,3,80,0.25)] cursor-default"
-                          : "border-white/20 hover:border-gold/60 cursor-pointer shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
-                      }`}
+                      className="absolute w-[240px] sm:w-[275px] lg:w-[290px] h-[380px] sm:h-[430px] lg:h-[470px]"
                     >
-                      <Image
-                        src={item.avatar}
-                        alt={item.name}
-                        fill
-                        sizes="(min-width: 1024px) 300px, 260px"
-                        className="object-cover object-center"
-                        priority={idx < 3}
+                      {/* Realistic floor shade directly beneath the card */}
+                      <div
+                        className={`pointer-events-none absolute -bottom-7 left-1/2 -translate-x-1/2 w-[88%] h-8 rounded-[100%] transition-all duration-700 ${
+                          isCurrent
+                            ? "bg-black/80 blur-xl opacity-100 scale-100"
+                            : "bg-black/30 blur-md opacity-35 scale-75"
+                        }`}
+                        aria-hidden="true"
                       />
 
-                      {/* Smooth dark gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                      {/* Main Cylindrical Card */}
+                      <div
+                        onClick={() => setActiveIndex(idx)}
+                        className={`relative w-full h-full rounded-[2.5rem] overflow-hidden border-2 bg-black transition-all duration-700 ${
+                          isCurrent
+                            ? "border-[#d70350]/70 ring-4 ring-[#d70350]/30 shadow-[0_35px_65px_-15px_rgba(0,0,0,0.85),0_15px_30px_rgba(0,0,0,0.6),0_0_40px_rgba(215,3,80,0.35)] cursor-default"
+                            : "border-white/20 hover:border-gold/60 cursor-pointer shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)]"
+                        }`}
+                      >
+                        <Image
+                          src={item.avatar}
+                          alt={item.name}
+                          fill
+                          sizes="(min-width: 1024px) 300px, 260px"
+                          className="object-cover object-center"
+                          priority={idx < 3}
+                        />
 
-                      {/* Active Card Details Floating at Bottom */}
-                      {isCurrent && (
-                        <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10 animate-fadeIn">
-                          <p className="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">
-                            {item.cause}
-                          </p>
-                          <h3 className="font-display text-2xl font-bold tracking-tight text-white leading-tight">
-                            {item.name}
-                          </h3>
-                          <p className="text-xs sm:text-sm font-medium text-white/90 mt-1">
-                            {item.role}
-                          </p>
-                          <p className="text-xs text-white/70 mt-0.5">
-                            {item.location}
-                          </p>
-                        </div>
-                      )}
+                        {/* Smooth dark gradient overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
-                      {/* Subtle Glass Cylinder Highlight Strip */}
-                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent" />
+                        {/* Shadow & Rim Reflection cast halfway from the front card onto side cards */}
+                        {diff === 1 && (
+                          <div
+                            className="pointer-events-none absolute inset-y-0 left-0 w-1/2 z-20 overflow-hidden"
+                            aria-hidden="true"
+                          >
+                            {/* Deep ambient shadow cast halfway across the card */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
+                            {/* Reflected glow from the front card's edge */}
+                            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[rgba(215,3,80,0.45)] via-black/20 to-transparent" />
+                          </div>
+                        )}
+
+                        {diff === -1 && (
+                          <div
+                            className="pointer-events-none absolute inset-y-0 right-0 w-1/2 z-20 overflow-hidden"
+                            aria-hidden="true"
+                          >
+                            {/* Deep ambient shadow cast halfway across the card */}
+                            <div className="absolute inset-0 bg-gradient-to-l from-black/90 via-black/50 to-transparent" />
+                            {/* Reflected glow from the front card's edge */}
+                            <div className="absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[rgba(215,3,80,0.45)] via-black/20 to-transparent" />
+                          </div>
+                        )}
+
+                        {/* Active Card Details Floating at Bottom */}
+                        {isCurrent && (
+                          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7 z-10 animate-fadeIn">
+                            <p className="text-[11px] font-bold uppercase tracking-wider text-gold mb-1">
+                              {item.cause}
+                            </p>
+                            <h3 className="font-display text-2xl font-bold tracking-tight text-white leading-tight">
+                              {item.name}
+                            </h3>
+                            <p className="text-xs sm:text-sm font-medium text-white/90 mt-1">
+                              {item.role}
+                            </p>
+                            <p className="text-xs text-white/70 mt-0.5">
+                              {item.location}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Subtle Glass Cylinder Highlight Strip */}
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent" />
+                      </div>
                     </div>
                   );
                 })}
               </div>
+
+              {/* Stage Floor Ambient Base Shade */}
+              <div
+                className="pointer-events-none absolute -bottom-5 left-1/2 -translate-x-1/2 w-[340px] sm:w-[400px] h-10 rounded-[100%] bg-gradient-to-r from-transparent via-black/50 to-transparent blur-2xl z-0"
+                aria-hidden="true"
+              />
             </div>
 
             {/* Right Column: Aesthetic Compact Light Testimonial Quote Card */}
