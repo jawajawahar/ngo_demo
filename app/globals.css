@@ -122,6 +122,25 @@
   .shadow-float {
     box-shadow: 0 10px 30px -10px rgb(0 0 0 / 0.25);
   }
+
+  @keyframes partner-marquee {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-partner-marquee {
+    display: flex;
+    width: max-content;
+    animation: partner-marquee 32s linear infinite;
+  }
+
+  .animate-partner-marquee:hover {
+    animation-play-state: paused;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
