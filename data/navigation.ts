@@ -14,6 +14,7 @@ export const footerNav = {
   organization: [
     { label: "About Us", href: "/about" },
     { label: "Our Work", href: "/our-work" },
+    { label: "Field Updates", href: "/updates" },
     { label: "Impact", href: "/impact" },
     { label: "Stories", href: "/stories" },
   ],

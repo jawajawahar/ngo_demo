@@ -4,7 +4,7 @@ import AppealsSection from "@/components/sections/AppealsSection";
 import GivingWaysSection from "@/components/sections/GivingWaysSection";
 import ImpactStats from "@/components/sections/ImpactStats";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import FeaturedStory from "@/components/sections/FeaturedStory";
+import LatestUpdatesSection from "@/components/sections/LatestUpdatesSection";
 import HowWeCreateChange from "@/components/sections/HowWeCreateChange";
 import VolunteerCTA from "@/components/sections/VolunteerCTA";
 import StoriesSection from "@/components/sections/StoriesSection";
@@ -20,7 +20,7 @@ export default function Home() {
       <GivingWaysSection />
       <ImpactStats />
       <TestimonialsSection />
-      <FeaturedStory />
+      <LatestUpdatesSection />
       <HowWeCreateChange />
       <VolunteerCTA />
       <StoriesSection />
